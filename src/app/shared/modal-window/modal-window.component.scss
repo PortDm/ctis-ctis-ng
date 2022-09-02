@@ -1,0 +1,43 @@
+.convas {
+    z-index: 1;
+    top: 0;
+    opacity: 50%;
+    background-color: rgb(66, 66, 66);
+}
+
+.window {
+    position: absolute;
+    z-index: 1;
+    width: 450px;
+    height: 150px;
+    background-color: white;
+    border-radius: 20px;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+}
+
+.info-contaner {
+    display: flex;
+    height: 80%;
+}
+
+.content {
+    width: 350px;
+    padding: 15px;
+}
+
+.icon {
+    width: 100px;
+    padding: 10px;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 40px;
+
+    .btn {
+        margin-right: 15px;
+    }
+}

@@ -1,0 +1,21 @@
+<form [formGroup]="form" style="width: 400px;" (submit)="submit()">
+    <small class="token-timeout" *ngIf="tokenTimeout">Session timeout. Please login again</small>
+
+    <h2 class="signin-h2">Sign in</h2>
+
+    <div class="form-control">
+        <label>Login</label>
+        <input type="text" placeholder="login@ctis.pd" formControlName="login">
+    </div>
+
+    <div class="form-control">
+        <label>Password</label>
+        <input type="password" formControlName="password">
+    </div>
+
+    <div *ngIf="accessDefined">
+        <p class="text-danger">Wrong password or login</p>
+    </div>
+
+    <button class="btn login-btn" [disabled]="form.invalid || isSubmit">Login</button>
+</form>

@@ -1,0 +1,115 @@
+<div *ngIf="!errorMessage; else errorMessageBlock">
+
+    <form [formGroup]="form" (submit)="submitCreateUser()" *ngIf="form">
+        <h2>Создание нового пользователя</h2>
+    
+        <div class="form-control">
+            <label>Фамилия</label>
+            <input type="text" formControlName="lastName">
+            <div class="text-danger" *ngIf="form.get('lastName')?.errors && form.get('lastName')?.touched">
+                <small *ngIf="form.get('lastName')?.errors!['required']">Поле обязательно</small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Имя</label>
+            <input type="text" formControlName="firstName">
+            <div class="text-danger" *ngIf="form.get('firstName')?.errors && form.get('firstName')?.touched">
+                <small *ngIf="form.get('firstName')?.errors!['required']">Поле обязательно</small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Отчество</label>
+            <input type="text" formControlName="middleName">
+            <div class="text-danger" *ngIf="form.get('middleName')?.errors && form.get('middleName')?.touched">
+                <small *ngIf="form.get('middleName')?.errors!['required']">Поле обязательно</small>
+            </div>
+        </div>
+
+
+        <div class="form-control">
+            <label>Подразделение</label>
+            <input type="text" formControlName="dep">
+            <div class="text-danger" *ngIf="form.get('dep')?.errors && form.get('dep')?.touched">
+                <small *ngIf="form.get('dep')?.errors!['required']">Поле обязательно</small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Должность</label>
+            <input type="text" formControlName="post">
+            <div class="text-danger" *ngIf="form.get('post')?.errors && form.get('post')?.touched">
+                <small *ngIf="form.get('post')?.errors!['required']">Поле обязательно</small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Звание</label>
+            <select formControlName="rank">
+                <option value="Служащий(ая)">Служащий(ая)</option>
+                <option value="Прапорщик">Прапорщик</option>
+            </select>
+            <div class="text-danger" *ngIf="form.get('rank')?.errors && form.get('rank')?.touched">
+                <small *ngIf="form.get('rank')?.errors!['required']">Поле обязательно</small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Дата рождения</label>
+            <input type="date" formControlName="birth">
+        </div>
+
+        <div class="form-control">
+            <label>Логин</label>
+            <input type="text" placeholder="login@ctis.pd" formControlName="login">
+            <div class="text-danger" *ngIf="form.get('login')?.errors && form.get('login')?.touched">
+                <small *ngIf="form.get('login')?.errors!['required']">Поле обязательно</small>
+                <small *ngIf="form.get('login')?.errors!['uniqLogin']">Уже существует</small>
+            </div>
+
+        </div>
+
+        <div class="form-control">
+            <label>Пароль</label>
+            <input type="password" formControlName="passwordStr" (input)="confirmPswLenth=form.get('passwordStr')?.value.length">
+            <div class="text-danger" *ngIf="form.get('passwordStr')?.errors && form.get('passwordStr')?.touched">
+                <small *ngIf="form.get('passwordStr')?.errors!['required']">Поле обязательно</small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Подтверждение пароля</label>
+            <input type="password" formControlName="confirmPswStr">
+
+            <div class="text-danger" *ngIf="form.get('confirmPswStr')?.errors && form.get('confirmPswStr')?.touched">
+                <small *ngIf="form.get('confirmPswStr')?.errors!['required']">Поле обязательно</small>
+            </div>
+    
+            <div *ngIf="form.get('passwordStr')?.touched">
+                <small class="text-danger" *ngIf="form.errors && form.errors['pswConfirm']">Пароли не совпадают</small>
+                <div *ngIf="form.get('passwordStr')?.value.length !== 0 && 
+                            form.get('confirmPswStr')?.value.length < form.get('passwordStr')?.value.length">
+                    <small>Длина должна быть {{confirmPswLenth | confirmPswEnds}}</small>
+                </div>
+            </div>
+    </div>
+
+    <div class="groups">
+        <label class="groups-label">Группы</label>
+        <div class="groups-checkboxes" formArrayName="checkBoxes">
+                <div class="checkbox-and-label" *ngFor="let checkbox of checkBoxes.controls; index as idx">
+                    <input type="checkbox" [formControlName]="idx">
+                    <label>{{groups[idx].name}}</label>
+                </div>
+            </div>
+    </div>
+
+    <button class="btn" [disabled]="form.invalid || isSubmit">Создать</button>
+    <button class="btn" type="button">Отмена</button>
+
+    </form>
+</div>
+<ng-template #errorMessageBlock>
+    <p class="error-message-block">{{errorMessage}}</p>
+</ng-template>

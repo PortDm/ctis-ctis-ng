@@ -1,0 +1,43 @@
+<div class="dashboard-convas" *ngIf="auth.token">
+    <ul class="list">
+        <div *ngIf="isShowUsers">
+            <li class="titles"><a (click)="isExpandUsers = !isExpandUsers">Users</a></li>
+            <li class="actions" *ngIf="isExpandUsers">
+                <ul>
+                    <li><a [routerLink]="['/users', 'create']" [routerLinkActive]="'active'">Create users</a></li>
+                    <li><a [routerLink]="['/users', 'list']" [routerLinkActive]="'active'">List users</a></li>
+                </ul>
+            </li>
+        </div>
+
+        <div *ngIf="isShowGroups">
+            <li class="titles"><a (click)="isExpandGroups = !isExpandGroups">Groups</a></li>
+            <li class="actions" *ngIf="isExpandGroups">
+                <ul>
+                    <li><a [routerLink]="['/users', 'groups', 'create']" [routerLinkActive]="'active'">Create groups</a></li>
+                    <li><a [routerLink]="['/users', 'groups', 'list']" [routerLinkActive]="'active'">List groups</a></li>
+                </ul>
+            </li>
+        </div>
+
+        <div *ngIf="isShowLogs">
+            <li class="titles"><a [routerLink]="['/users', 'logs']" [routerLinkActive]="'active'">Logs</a></li>
+            <!-- <li class="actions" *ngIf="isExpandGroups">
+                <ul>
+                    <li><a [routerLink]="['/users', 'groups', 'create']" [routerLinkActive]="'active'">Create groups</a></li>
+                    <li><a [routerLink]="['/users', 'groups', 'list']" [routerLinkActive]="'active'">List groups</a></li>
+                </ul>
+            </li> -->
+        </div>
+
+        <div *ngIf="true">
+            <li class="titles"><a (click)="isExpandGroups = !isExpandGroups">Another</a></li>
+            <li class="actions" *ngIf="isExpandGroups">
+                <ul>
+                    <li><a [routerLink]="[]" [routerLinkActive]="'active'">Ohter 1</a></li>
+                    <li><a [routerLink]="[]" [routerLinkActive]="'active'">Other 2</a></li>
+                </ul>
+            </li>
+        </div>
+    </ul>
+</div>

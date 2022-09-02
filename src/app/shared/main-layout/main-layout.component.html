@@ -1,0 +1,22 @@
+<div class="convas"></div>
+
+<div class="message">
+    <app-message 
+        *ngFor="let m of messageService.messageStore" 
+        [id]="m.id"
+        [mes]="m.text" 
+        [type]="m.type">
+    </app-message>
+</div>
+
+<app-modal-window></app-modal-window>
+
+<div class="vert-layout">
+    <app-users-nav class="top"></app-users-nav>
+
+    <div class="hor-layout">
+        <app-dashboard class="dashboard" *ngIf="auth.token"></app-dashboard>
+        <div class="content"><router-outlet></router-outlet></div>
+    </div>
+</div>
+

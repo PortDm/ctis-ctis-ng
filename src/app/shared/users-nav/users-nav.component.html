@@ -1,0 +1,15 @@
+<div class="users-nav" *ngIf="authService.token">
+    <ul class="users-actions">
+        <p>CTechnical IService</p>
+        <!-- <li><a [routerLink]="['/users', 'create']" [routerLinkActive]="'active'">Users Create</a></li>
+        <li><a [routerLink]="['/users', 'list']" [routerLinkActive]="'active'">Users List</a></li>
+        <li><a [routerLink]="['/users', 'groups', 'create']" [routerLinkActive]="'active'">Groups Create</a></li>
+        <li><a [routerLink]="['/users', 'groups', 'list']" [routerLinkActive]="'active'">Groups List</a></li> -->
+
+    </ul>
+
+    <ul class="log-actions">
+        <li class="user-login">{{this.authService.userLogin}}</li>
+        <li><a (click)="authService.logout()">Logout</a></li>
+    </ul>
+</div>

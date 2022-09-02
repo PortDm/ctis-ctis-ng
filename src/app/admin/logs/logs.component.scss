@@ -1,0 +1,42 @@
+.logs-header {
+    margin: 0 auto;
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+form {
+    width: 900px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+input[type=date] {
+    min-width: 50px;
+    margin-left: 10px;
+}
+
+input[type=text] {
+    margin-right: 10px;
+}
+
+table {
+    font-size: 12px;
+}
+
+tbody td:nth-child(1) {
+    width: 130px;
+}
+
+tbody td:nth-child(2) {
+    width: 120px;
+}
+
+tbody td:nth-child(3) {
+    width: 150px;
+}
+
+tbody td:nth-child(4) {
+    width: 70px;
+}

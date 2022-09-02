@@ -1,0 +1,22 @@
+<div *ngIf="errorMessage === ''; else errorMessageBlock">
+    <div *ngIf="groups; else loading">
+        <h2>Groups</h2>
+
+        <table>
+            <tr>
+                <th>Name group</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let group of groups">
+                <td><a [routerLink]="['/users', 'groups', 'update', group.id]">{{group.name}}</a></td>
+                <td class="td-options"><a class="danger" (click)="removeGroups(group.id, group.name)">&times;</a></td>
+            </tr>
+        </table>
+    </div>
+    <ng-template #loading>
+        <p [ngStyle]="{'padding-left': '20px'}">Loading data...</p>
+    </ng-template>
+</div>
+<ng-template #errorMessageBlock>
+    <p [ngStyle]="{'padding-left': '20px'}">{{errorMessage}}</p>
+</ng-template>

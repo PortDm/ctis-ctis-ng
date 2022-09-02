@@ -1,0 +1,46 @@
+.btn {
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+small {
+    margin: 0;
+}
+
+input[type='checkbox'] {
+    width: 30px;
+    display: inline;
+    position: relative;
+    top: 1px;
+}
+
+.groups {
+    border: 1px solid rgb(99, 99, 99);
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding: 0 5px;
+}
+
+.groups-label {
+    position: relative;
+    top: -10px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.groups-checkboxes {
+    position: relative;
+    top: -5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.checkbox-and-label {
+    width: 170px;
+}
+
+.error-message-block {
+    padding-left: 20px;
+}

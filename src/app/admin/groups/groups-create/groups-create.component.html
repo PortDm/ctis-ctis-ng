@@ -1,0 +1,25 @@
+<div *ngIf="!errorMessage; else errorMessageBlock">
+
+    <div *ngIf="form">
+        <form [formGroup]="form" (submit)="submitCreateGroups()">
+            <h2>Create new group</h2>
+
+            <div class="form-control">
+                <label>Name groups</label>
+                <input type="text" formControlName="name">
+                <div class="text-danger" *ngIf="form.get('name')?.invalid">
+                    <small *ngIf="form.get('name')?.errors!['groupsUniq']">
+                        Already exist
+                    </small>
+                </div>
+            </div>
+
+            <button class="btn" [disabled]="form.invalid || isSubmit">Create</button>
+            <button class="btn" type="button" (click)="cancel()">Cancel</button>
+        </form>
+    </div>
+
+</div>
+<ng-template #errorMessageBlock>
+    <p class="error-message-block">{{errorMessage}}</p>
+</ng-template>

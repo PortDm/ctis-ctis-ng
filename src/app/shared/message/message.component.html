@@ -1,0 +1,9 @@
+<div class="message">{{mes}}
+<div class="type-color" [ngClass]="{
+    'success': type === messageType.success,
+    'danger': type === messageType.danger
+    }">
+</div>
+    
+    <button class="close" (click)="close()">&times;</button>
+</div>

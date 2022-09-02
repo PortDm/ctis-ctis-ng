@@ -1,0 +1,52 @@
+
+<form [formGroup]="form">
+    <div class="controls-filters">
+        <input type="text" placeholder="master" formControlName="master" (input)="filtrations()">
+        <input type="text" placeholder="action" formControlName="action" (input)="filtrations()">
+        <select formControlName="type" (change)="filtrations()">
+            <option value="all">-- all types --</option>
+            <option value="success">success</option>
+            <option value="warning">warning</option>
+            <option value="access_denied">access_denied</option>
+            <option value="error">error</option>
+        </select>
+        <input type="date" formControlName="startDate" (input)="filtrations()">
+        <input type="date" formControlName="endDate" (input)="filtrations()">
+    </div>
+</form>
+
+
+<div *ngIf="!messageError; else messageErrorBlock">
+    <div *ngIf="logs; else loading">
+        <div class="logs-header">
+            <h2>Logs</h2>
+            <span> count logs: {{countLogs}}</span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Master</td>
+                    <td>Action</td>
+                    <td>Type</td>
+                    <td>Datas</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of logs">
+                    <td>{{log.date | date:'yyyy/MMM/dd HH:mm:ss'}}</td>
+                    <td>{{log.master}}</td>
+                    <td>{{log.action}}</td>
+                    <td>{{log.type}}</td>
+                    <td>{{log.data}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #loading>
+        <p>Loading...</p>
+    </ng-template>
+</div>
+<ng-template #messageErrorBlock>
+    <p>{{messageError}}</p>
+</ng-template>

@@ -1,1 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --color-danger: rgb(206, 0, 0);
+    --color-border-invalid: red;
+    --color-border-valid: rgb(0, 192, 0);
+    --color-background: rgb(187, 187, 187);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 25px 15px;
+    border-radius: 10px;
+}
+
+.form-control {
+    margin-top: .5rem;
+}
+
+.controls-filters {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+input,
+select {
+    width: 100%;
+    padding: 6px .5rem; //.2rem .5rem;
+    margin-top: 1px;
+    // border: 1px solid red;
+
+    &.ng-invalid.ng-touched {
+        border: 1px solid var(--color-border-invalid);
+    }
+
+    &.ng-valid.ng-touched {
+        border: 1px solid var(--color-border-valid);
+    }
+}
+
+.btn {
+    padding: 5px 1rem;
+}
+
+.convas {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--color-background);
+}
+
+
+
+.text-danger {
+    color: var(--color-danger);
+}
+
+table {
+    border-collapse: collapse;
+    background: white;
+    width: 900px;
+    margin: 0 auto;
+}
+
+tr, th, td {
+    border: 1px solid;
+    padding: .2rem .5rem;
+}

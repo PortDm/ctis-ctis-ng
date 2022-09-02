@@ -1,0 +1,20 @@
+<div class="modal-window" *ngIf="modalWindowService.isShow">
+    <div class="convas"></div>
+    <div class="window">
+        <div class="info-contaner">
+            <div class="icon">
+                <img *ngIf='modalWindowService.type === type.success' [src]="'assets/success.png'">
+                <img *ngIf='modalWindowService.type === type.danger' [src]="'assets/danger.png'">
+            </div>
+            <div class="content">{{modalWindowService.text}}</div>
+        </div>
+        <div class="buttons">
+            <button class="btn" (click)="modalWindowService.accept()"
+                *ngIf="modalWindowService.buttons === buttons.OkAndCancel || 
+                        modalWindowService.buttons === buttons.OkOnly">Ok</button>
+            <button class="btn" (click)="modalWindowService.cancel()" 
+                *ngIf="modalWindowService.buttons === buttons.OkAndCancel || 
+                        modalWindowService.buttons === buttons.CancelOnly">Cancel</button>
+        </div>
+    </div>
+</div>

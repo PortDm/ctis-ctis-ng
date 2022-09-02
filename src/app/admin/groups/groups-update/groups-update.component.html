@@ -1,0 +1,18 @@
+<div *ngIf="form">
+    <form [formGroup]="form" (submit)="submitUpdateGroups()">
+        <h2>Update group</h2>
+
+        <div class="form-control">
+            <label>Name groups</label>
+            <input type="text" formControlName="name">
+            <div class="text-danger" *ngIf="form.get('name')?.invalid">
+                <small *ngIf="form.get('name')?.errors!['groupsUniq']">
+                    Already exist
+                </small>
+            </div>
+        </div>
+
+        <button class="btn" [disabled]="form.invalid || isSubmit">Update</button>
+        <button class="btn" type="button" (click)="cancel()">Cancel</button>
+    </form>
+</div>
