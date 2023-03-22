@@ -125,7 +125,7 @@ export class UsersUpdateComponent {
     }
 
     cancel() {
-        this.modalWindow.show('Do you sure cancel. Unsaved data will be lost', ModalWindowType.danger)
+        this.modalWindow.show('Do you sure cancel? Unsaved data will be lost', ModalWindowType.danger)
             .subscribe(res => {
                 if(res) {
                     this.router.navigate(['/users', 'list'])

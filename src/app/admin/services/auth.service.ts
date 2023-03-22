@@ -5,6 +5,9 @@ import { environment } from "src/environments/environment";
 import { iLoginResponce } from "../users.interfaces";
 import { Router } from "@angular/router";
 
+
+const DB_SERVER = environment.dbServetUrl
+
 @Injectable()
 export class AuthService {
 
@@ -31,7 +34,7 @@ export class AuthService {
 
     login(login: string, passStr: string): Observable<iLoginResponce | null> {
         const passwordAES = this.generatePassAES(login, passStr)
-        return this.http.post<iLoginResponce>(`${environment.dbServetUrl}/users/login`, { login, passwordAES })
+        return this.http.post<iLoginResponce>(`${DB_SERVER}/users/login`, { login, passwordAES })
             .pipe(
                 tap(this.setToken)
             )
@@ -43,20 +46,18 @@ export class AuthService {
     }
 
     logout() {
-        this.router.navigate(['/users', 'login'], {
-            queryParams: {previousUser: localStorage.getItem('userLogin')}
-        })
-        this.setToken(null)
+        this.http.get(`${DB_SERVER}/tokens/logout/${this.token}`)
+            .subscribe(res => {
+                console.log(`logout res: ${res}`)
+                this.router.navigate(['/users', 'login'], {queryParams: {previousUser: localStorage.getItem('userLogin')}})
+                this.setToken(null)
+            })
+
     }
 
     isAuth(): Observable<boolean> {
-        return this.http.get<iLoginResponce>(`${environment.dbServetUrl}/tokens/isValidToken/${this.token}`)
+        return this.http.get<iLoginResponce>(`${DB_SERVER}/tokens/isValidToken/${this.token}`)
         .pipe(
-            // tap(isValidToken => {
-            //     if(!isValidToken) {
-            //         this.setToken(null)
-            //     }
-            // }),
             map(isValidToken => {
                 if(isValidToken) {
                     return true
@@ -67,7 +68,6 @@ export class AuthService {
                     this.setToken(null)
                     return false
                 }
-
             })
         ) 
     }

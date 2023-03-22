@@ -1,0 +1,43 @@
+<div>
+    <h2>Sew Conc into tho Volume</h2>
+
+    <div>
+        <h3>Concs not sew</h3>
+        <div *ngFor="let conc of concs; let idx = index">
+
+            <button class="btn" *ngIf="!conc.volume" (click)="chooseConc(idx)">
+                {{conc.reg}}-{{conc.date|date:"dd/MM-yy"}}
+            </button>
+        </div>
+    </div>
+
+    <div>
+        <h3>Volumns</h3>
+        <div *ngFor="let year of years; let yearIdx = index">
+            <div *ngFor="let case of year.cases; let caseIdx = index">
+                <button class="btn" *ngFor="let volume of case.volumns; let volumeIdx = index"
+                    (click)="chooseVolume(yearIdx, caseIdx, volumeIdx)">
+                    y.{{year.year}}, c.{{case.case}}, v.{{volume.volume}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <form [formGroup]="form">
+        <label>Start list</label>
+        <input type="number" formControlName="startList">
+    </form>
+
+    <p *ngIf="conc">
+        Choosed conc: {{conc.reg}}-{{conc.date|date:"dd/MM-yy"}}
+    </p>
+    <p *ngIf="volume">
+        Choosed volume: v.{{volume.volume}}
+    </p>
+
+    <div class="text-danger">
+        <small *ngIf="form.errors && form.errors['intersectionLists']">Lists intersection</small>
+    </div>
+
+    <button class="btn" [disabled]="form.invalid" (click)="sew()">Sew</button>
+</div>

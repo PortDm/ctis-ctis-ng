@@ -9,7 +9,7 @@ import { ModalWindowService } from './shared/services/modal-window.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [   
     BrowserModule,

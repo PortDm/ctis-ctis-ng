@@ -1,0 +1,24 @@
+<div class="content">
+    <div *ngIf="conc; else loading">
+        <h3>
+            Conclusion № {{conc.reg}} : {{conc.date | dateRome}}
+            <a [routerLink]="['/spwork', 'concs', 'update', concId]">edit</a>
+        </h3>
+
+        <ul *ngFor="let list of conc.lists">
+            <li>
+                <h4>list: {{list.list}}</h4>
+                <ul *ngFor="let point of list.points">
+                    <li class="points">
+                        p.{{point.point}} {{point.device.dem}} {{point.device.model}} sn:{{point.device.sn}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <ng-template #loading>
+        <p>Conclision loading...</p>
+    </ng-template>
+</div>
+

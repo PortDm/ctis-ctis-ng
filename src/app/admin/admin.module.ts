@@ -32,10 +32,6 @@ import { LogsService } from "./services/logs.service";
         UsersFilterPipe,
         LogsComponent
     ],
-    imports: [
-        SharedModule,
-        UsersRoutingModule
-    ],
     providers: [
         UsersService,
         GroupsService,
@@ -43,6 +39,10 @@ import { LogsService } from "./services/logs.service";
         UsersValidators,
         GroupsValidators,
         LogsService
+    ],
+    imports: [
+        SharedModule,
+        UsersRoutingModule
     ]
 })
 export class UsersModule {

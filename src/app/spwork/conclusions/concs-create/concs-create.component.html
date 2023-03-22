@@ -1,0 +1,26 @@
+<div *ngIf="form">
+    <form [formGroup]="form" (submit)="submitConcsCreate()">
+        <h2>Create conclusion</h2>
+
+        <div class="form-control">
+            <label>Reg number</label>
+            <input type="text" placeholder="Reg number..." formControlName="reg">
+        </div>
+
+        <div class="form-control">
+            <label>Date</label>
+            <input type="date" formControlName="date">
+        </div>
+
+        <div class="form-control">
+            <label>Count of lists</label>
+            <input type="number" formControlName="countOfLists">
+        </div>
+
+        <div class="text-danger" *ngIf="form.errors && form.errors['concsUniq']">
+            <small>Conclusion not uniq</small>
+        </div>
+        <button class="btn" type="submit" [disabled]="form.invalid || isSubmit">Create</button>
+    </form>
+
+</div>

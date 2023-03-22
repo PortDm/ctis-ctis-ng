@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+.content {
+    margin-left: 10px;
+}
+
 form {
     width: 400px;
     margin: 0 auto;
@@ -48,6 +52,7 @@ select {
 
 .btn {
     padding: 5px 1rem;
+    cursor: pointer;
 }
 
 .convas {

@@ -11,10 +11,16 @@ export class DashboardComponent {
     isShowUsers = localStorage.getItem('userGroups')?.includes('Administrators')
     isShowGroups = true // localStorage.getItem('userGroups')?.includes('Administrators')
     isShowLogs = localStorage.getItem('userGroups')?.includes('Administrators')
+    isShowSpwork = true
 
     isExpandUsers = false
     isExpandGroups = false
+    isExpandSpwork = true
+    isExpandDevices = true
+    isExpandConcs = true
+    isExpandCases = true
     // isExpandLogs = false
+
 
     constructor(
         public auth: AuthService

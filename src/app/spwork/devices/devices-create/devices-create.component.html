@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="form" *ngIf="form">
+        <form [formGroup]="form" (submit)="submitDeviceCreate()">
+            <h2>Create device</h2>
+
+            <div class="form-control">
+                <label>Denomination</label>
+                <input type="text" formControlName="dem">
+            </div>
+
+            <div class="form-control">
+                <label>Model</label>
+                <input type="text" formControlName="model">
+            </div>
+
+            <div class="form-control">
+                <label>Serial Number</label>
+                <input type="text" formControlName="sn">
+                <small class="text-danger" *ngIf="form.controls['sn'].errors && form.controls['sn'].errors['devUniq']">
+                    Not uniq
+                </small>
+            </div>
+
+            <div>
+                <label>Conc: </label>
+                <label *ngIf="!form.controls['reg'].errors">{{form.controls['reg'].value}}</label>
+                <label *ngIf="!form.controls['date'].errors">~{{form.controls['date'].value | dateRome}}</label>
+                <label *ngIf="!form.controls['list'].errors">, list: {{form.controls['list'].value}}</label>
+            </div>
+
+            <div>
+                <label>Point</label>
+                <input type="text" formControlName="point">
+                <small class="text-danger" *ngIf="form.errors && form.errors['pointUniq']">
+                    Not uniq
+                </small>
+            </div>
+
+            <button class="btn" type="submit" [disabled]="isSubmit || form.invalid">Create</button>
+
+        </form>
+    </div>
+
+    
+    <app-concs-list [ref]="false" [lists]="true" (listId)="chooseList($event)"></app-concs-list>
+</div>

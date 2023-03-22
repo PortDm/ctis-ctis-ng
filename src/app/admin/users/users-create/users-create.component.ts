@@ -10,8 +10,7 @@ import { MessageService } from "src/app/shared/services/message.service";
 import { MessageType } from "src/app/shared/shared.interfaces";
 import { GroupsService } from "../../services/groups.service";
 import { iGroups } from "../../groups.interfaces";
-import { catchError, Observable, of, switchMap, tap } from "rxjs";
-import { HttpErrorResponse } from "@angular/common/http";
+import { catchError, of, switchMap } from "rxjs";
 
 @Component({
     selector: 'app-users-create',

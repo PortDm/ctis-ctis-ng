@@ -1,0 +1,35 @@
+<div *ngIf="concs && concs.length; else empty">
+    <h2>Conclusions list</h2>
+    <div>
+        <label>Filter</label>
+        <input type="text" placeholder="filter conc" [(ngModel)]="concsFilterReg">
+        <input type="date" [(ngModel)]="concsFilterDateStart">
+        <input type="date" [(ngModel)]="concsFilterDateEnd">
+    </div>
+
+    <div class="area">
+
+        <p *ngFor="let conc of concs | concsFilter: concsFilterReg : concsFilterDateStart : concsFilterDateEnd">
+            <span *ngIf="ref"><a [routerLink]="['/spwork', 'concs', 'details', conc.id]">№ {{conc.reg}}</a></span>
+            <span *ngIf="!ref">№ {{conc.reg}}</span>
+            <span> : </span>
+            <span>{{conc.date | dateRome}},</span>
+            <span *ngIf="lists">
+                lists:
+                <button *ngFor="let list of conc.lists" 
+                    (click)="chooseList({
+                            reg: conc.reg, 
+                            date: conc.date, 
+                            list: list.list,
+                            listId: list.id
+                        })"
+                >{{list.list}}
+            </button>
+            </span>
+        </p>
+    </div>
+        
+</div>
+<ng-template #empty>
+    <p>Conclusions list is empty</p>
+</ng-template>

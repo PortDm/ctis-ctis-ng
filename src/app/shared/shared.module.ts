@@ -19,6 +19,9 @@ import { UsersNavComponent } from "./users-nav/users-nav.component";
         UsersNavComponent,
         DashboardComponent
     ],
+    providers: [
+        AuthService
+    ],
     imports: [
         CommonModule,
         RouterModule
@@ -29,8 +32,7 @@ import { UsersNavComponent } from "./users-nav/users-nav.component";
         FormsModule,
         ReactiveFormsModule,
         MainLayoutComponent
-    ],
-    providers: [AuthService]
+    ]
 })
 export class SharedModule {
 

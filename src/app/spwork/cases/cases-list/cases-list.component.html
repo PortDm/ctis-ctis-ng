@@ -1,0 +1,23 @@
+<div>
+    <h2>Cases list</h2>
+    <div *ngIf="years && years.length !== 0; else yearsEmpty">
+        <ul *ngFor="let year of years">
+            <h3>y. {{year.year}}</h3>
+
+            <ul *ngFor="let caseObj of year.cases">
+                <ul *ngFor="let volume of caseObj.volumns">
+                    <li><a [routerLink]="['/spwork', 'concs', 'list']" [queryParams]="{idVolume: volume.id}"
+                        
+                        >c.{{caseObj.case}}, v.{{volume.volume}}</a>
+                    </li>
+                </ul>
+            </ul>
+
+            <hr/>
+           
+        </ul>
+    </div>
+    <ng-template #yearsEmpty>
+        <p>Years list is empty</p>
+    </ng-template>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="form">
+    <form [formGroup]="form" (submit)="accountCreateSubmit()">
+        <h2>Create Account</h2>
+
+        <div class="form-control">
+            <label>Year</label>
+            <input type="text" placeholder="inter year..." formControlName="year">
+        </div>
+
+        <div class="form-control">
+            <label>Case</label>
+            <input type="text" placeholder="inter case..." formControlName="caseName">
+        </div>
+
+        <div class="form-control">
+            <label>Volume</label>
+            <input type="text" placeholder="inter volume..." formControlName="volume">
+            <small class="text-danger" *ngIf="form.errors && form.errors['volumeUniq']">
+                Not uniq
+            </small>
+        </div>
+
+        <button class="btn" [disabled]="form.invalid || isSubmit">Create</button>
+    </form>
+</div>

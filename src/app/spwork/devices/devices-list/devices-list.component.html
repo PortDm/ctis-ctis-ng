@@ -1,0 +1,37 @@
+<h2>Devices list</h2>
+
+<form [formGroup]="form">
+    <h3>filters</h3>
+    <input placeholder="denomination" formControlName="dem" (input)="loadDevs()">
+    <input placeholder="model" formControlName="model" (input)="loadDevs()">
+    <input placeholder="sn" formControlName="sn" (input)="loadDevs()">
+</form>
+
+<div *ngIf="devices && devices.length; else empty">
+    <table>
+        <head>
+            <tr>
+                <th>Denomination</th>
+                <th>Model</th>
+                <th>SN</th>
+            </tr>
+        </head>
+        <body>
+            <tr *ngFor="let dev of devices">
+                <td>{{dev.dem}}</td>
+                <td><a [routerLink]="['/spwork', 'devices', 'update', dev.id]">{{dev.model}}</a></td>
+                <td>{{dev.sn}}</td>
+                <td>
+                    <a *ngFor="let point of dev.points"
+                        [routerLink]="['/spwork', 'concs', 'details', point.list.conc.id]"
+                        >c.{{point.list.conc.reg}}~{{point.list.conc.date | dateRome}}, list: {{point.list.list}}, p.{{point.point}}
+                    </a>
+                        
+                </td>
+            </tr>
+        </body>
+    </table>
+</div>
+<ng-template #empty>
+    <p>List devices is empty</p>
+</ng-template>

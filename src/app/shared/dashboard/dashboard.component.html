@@ -20,6 +20,47 @@
             </li>
         </div>
 
+        <div *ngIf="isShowSpwork">
+            <div class="titles">
+                <a (click)="isExpandSpwork = !isExpandSpwork">SpWork</a>
+                
+                <li class="titles actions" *ngIf="isExpandSpwork">
+                    <ul>
+                        <a (click)="isExpandDevices = !isExpandDevices">Devices</a>
+                        <li class="actions" *ngIf="isExpandDevices">
+                            <ul>
+                                <li><a [routerLink]="['/spwork', 'devices', 'list']" [routerLinkActive]="'active'">List devices</a></li>
+                                <li><a [routerLink]="['/spwork', 'devices', 'create']" [routerLinkActive]="'active'">Create devices</a></li>
+                                <li><a [routerLink]="['/spwork', 'devices', 'cart']" [routerLinkActive]="'active'">Cart</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <a (click)="isExpandConcs = !isExpandConcs">Conclusions</a>
+                        <li class="actions" *ngIf="isExpandConcs">
+                            <ul>
+                                <li><a [routerLink]="['/spwork', 'concs', 'list']" [routerLinkActive]="'active'">List concs</a></li>
+                                <li><a [routerLink]="['/spwork', 'concs', 'create']" [routerLinkActive]="'active'">Create concs</a></li>
+                                <li><a [routerLink]="['/spwork', 'concs', 'sew']" [routerLinkActive]="'active'">Sew</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <a (click)="isExpandCases = !isExpandCases">Cases</a>
+                        <li class="actions" *ngIf="isExpandCases">
+                            <ul>
+                                <li><a [routerLink]="['/spwork', 'cases', 'list']"> List cases</a></li>
+                                <li><a [routerLink]="['/spwork', 'cases', 'create']">Create case</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </li>
+            </div>
+        </div>
+
         <div *ngIf="isShowLogs">
             <li class="titles"><a [routerLink]="['/users', 'logs']" [routerLinkActive]="'active'">Logs</a></li>
             <!-- <li class="actions" *ngIf="isExpandGroups">
